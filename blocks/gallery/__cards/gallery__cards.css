@@ -1,8 +1,11 @@
 .gallery__cards {
     width: 282px;
-    height: 361px;
-
-
     background-color: #FFFFFF;
     border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: 282px auto;
+    grid-template-areas:
+        "image image"
+        "text icon";
 }

@@ -1,0 +1,14 @@
+.gallery__icon {
+    width: 22px;
+    height: 19px;
+    grid-area: icon;
+    background-image: url(../../../images/vector-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: #FFFFFF;
+    align-self: center;
+    justify-self: end;
+    padding-right: 58px;
+    margin: 0;
+}
