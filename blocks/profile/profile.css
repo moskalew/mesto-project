@@ -1,10 +1,9 @@
 .profile {
     max-width: 880px;
-    border: 1px solid red;
     margin: 0 auto;
     padding-top: 40px;
     color: white;
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: min-content repeat(2, 1fr);
     align-items: center;
 }

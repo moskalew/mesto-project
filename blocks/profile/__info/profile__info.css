@@ -1,8 +1,10 @@
-.profile-info {
+.profile__info {
     max-width: 336px;
     margin: 0;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(2, auto);
-    gap: 16px 18px;
+    gap: 8px 19px;
+    padding-left: 30px;
+    align-items: baseline;
 }
