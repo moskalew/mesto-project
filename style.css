@@ -140,20 +140,3 @@
     top: 313px;
     left: 240px;
 } */
-
-
-.mesto-russia {
-    position: relative;
-    width: 318px;
-    height: 18px;
-    left: 200px;
-    top: 1139px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-
-    color: #545454;
-}

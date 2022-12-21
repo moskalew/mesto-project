@@ -9,3 +9,12 @@
     background-position: center;
     margin-left: 230px;
 }
+
+@media screen and (max-width: 888px) {
+    .profile__add-button {
+        background-image: url(../../../images/Vector320.svg);
+        margin: 0 auto;
+        padding: 0;
+        min-width: 282px;
+    }
+}
