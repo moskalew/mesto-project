@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./vendor/normalize.css" />
     <link rel="stylesheet" href="./vendor/fonts.css" />
+    <link rel="stylesheet" href="../mesto-project/pages/index.css" />
     <link rel="stylesheet" href="style.css" />
     <title>project-mesto</title>
   </head>
@@ -15,87 +16,84 @@
       <header class="header">
         <img
           class="header__logo"
-          src="/images/Vectorlogo.svg"
+          src="/mesto-project/images/Vectorlogo.svg"
           alt="логотип место"
         />
         <div class="header__line"></div>
       </header>
-
-      <div class="profile">
-        <img src="/images/imageJacIf.jpg" alt="фотка Кусто" class="avatar" />
-        <div class="profile-info">
-          <h1 class="name">Жак-Ив Кусто</h1>
-          <div class="rectangle">
-            <img
-              class="icon-pen"
-              src="/images/Vector-rectangle.svg"
-              alt="иконка карандаша"
-            />
+      <main>
+        <section class="profile">
+          <img
+            src="/mesto-project/images/imageJacIf.jpg"
+            alt="фотка Кусто"
+            class="avatar"
+          />
+          <div class="profile-info">
+            <h1 class="name">Жак-Ив Кусто</h1>
+            <button class="edit-button"></button>
+            <p class="mission">Исследователь океана</p>
           </div>
-          <button class="add-button">
-            <img src="/images/Vectoradd-button.svg" alt="дизайн кнопки" />
-          </button>
-          <p class="mission">Исследователь океана</p>
-        </div>
-      </div>
+          <button class="add-button"></button>
+        </section>
 
-      <section class="gallery">
-        <div class="cards">
-          <img
-            class="gallery__image"
-            src="/images/kirill-pershin-1088404-unsplash-1.jpg"
-            alt=""
-          />
-          <p class="text">Карачаевск</p>
-          <img class="heart" src="/images/heart.svg" alt="иконка сердечка" />
-        </div>
-        <div class="cards">
-          <img
-            class="gallery__image"
-            src="/images/kirill-pershin-1404681-unsplash-1.jpg"
-            alt=""
-          />
-          <p class="text">Гора Эльбрус</p>
-          <img class="heart" src="/images/heart.svg" alt="иконка сердечка" />
-        </div>
+        <section class="gallery">
+          <div class="cards">
+            <img
+              class="gallery__image"
+              src="/images/kirill-pershin-1088404-unsplash-1.jpg"
+              alt=""
+            />
+            <p class="text">Карачаевск</p>
+            <img class="heart" src="/images/heart.svg" alt="иконка сердечка" />
+          </div>
+          <div class="cards">
+            <img
+              class="gallery__image"
+              src="/images/kirill-pershin-1404681-unsplash-1.jpg"
+              alt=""
+            />
+            <p class="text">Гора Эльбрус</p>
+            <img class="heart" src="/images/heart.svg" alt="иконка сердечка" />
+          </div>
 
-        <div class="cards">
-          <img
-            class="gallery__image"
-            src="/images/kirill-pershin-1556355-unsplash-1.jpg"
-            alt=""
-          />
-          <p class="text">Домбай</p>
-          <img class="heart" src="/images/heart.svg" alt="иконка сердечка" />
-        </div>
-        <div class="cards">
-          <img
-            class="gallery__image"
-            src="/images/kirill-pershin-1404681-unsplash.jpg"
-            alt=""
-          />
-          <p class="text">Гора Эльбрус</p>
-          <img class="heart" src="/images/heart.svg" alt="иконка сердечка" />
-        </div>
-        <div class="cards">
-          <img
-            class="gallery__image"
-            src="/images/kirill-pershin-1556355-unsplash-1.jpg"
-            alt=""
-          />
-          <p class="text">Домбай</p>
-          <img class="heart" src="/images/heart.svg" alt="иконка сердечка" />
-        </div>
-        <div class="cards">
-          <img
-            class="gallery__image"
-            src="/images/kirill-pershin-1088404-unsplash.jpg"
-            alt=""
-          />
-          <p class="text">Карачаево-Ч...</p>
-          <img class="heart" src="/images/heart.svg" alt="иконка сердечка" />
-        </div>
-      </section>
+          <div class="cards">
+            <img
+              class="gallery__image"
+              src="/images/kirill-pershin-1556355-unsplash-1.jpg"
+              alt=""
+            />
+            <p class="text">Домбай</p>
+            <img class="heart" src="/images/heart.svg" alt="иконка сердечка" />
+          </div>
+          <div class="cards">
+            <img
+              class="gallery__image"
+              src="/images/kirill-pershin-1404681-unsplash.jpg"
+              alt=""
+            />
+            <p class="text">Гора Эльбрус</p>
+            <img class="heart" src="/images/heart.svg" alt="иконка сердечка" />
+          </div>
+          <div class="cards">
+            <img
+              class="gallery__image"
+              src="/images/kirill-pershin-1556355-unsplash-1.jpg"
+              alt=""
+            />
+            <p class="text">Домбай</p>
+            <img class="heart" src="/images/heart.svg" alt="иконка сердечка" />
+          </div>
+          <div class="cards">
+            <img
+              class="gallery__image"
+              src="/images/kirill-pershin-1088404-unsplash.jpg"
+              alt=""
+            />
+            <p class="text">Карачаево-Ч...</p>
+            <img class="heart" src="/images/heart.svg" alt="иконка сердечка" />
+          </div>
+        </section>
+      </main>
 
       <p class="mesto-russia">© 2020 Mesto Russia</p>
 

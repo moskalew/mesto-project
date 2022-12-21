@@ -94,42 +94,13 @@
     /* border: 1px solid red; */
 }
 
-.main-page {
-    position: relative;
-    margin: 0 auto;
-    width: 1280px;
-    height: 1217px;
-    background-color: #000000;
-}
 
 
 
 
 
-.profile {
-    position: relative;
-    width: 880px;
-    height: 120px;
-    left: 200px;
-    top: 159px;
 
-
-    width: 880px;
-    height: 120px;
-    left: 200px;
-    top: 159px;
-}
-
-.avatar {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    left: 0;
-    top: 0;
-    border-radius: 50%;
-}
-
-
+/* 
 
 .name {
     position: relative;
@@ -193,7 +164,7 @@
     background-color: #000000;
     border: 2px solid #FFFFFF;
     border-radius: 2px;
-}
+} */
 
 .gallery {
     width: 880px;
