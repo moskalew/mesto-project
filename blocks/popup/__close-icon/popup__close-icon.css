@@ -10,3 +10,21 @@
     color: #FFFFFF;
     background-color: black;
 }
+
+.popup__close-icon:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 444px) {
+    .popup__close-icon {
+        background-image: url(../../../images/close-Icon320.svg);
+        width: 20px;
+        height: 20px;
+        color: rgba(255, 255, 255, 1);
+        z-index: 3;
+        right: 0;
+        top: -36px;
+    }
+
+}

@@ -20,6 +20,7 @@
 @import url(../blocks/gallery/__image/gallery__image.css);
 @import url(../blocks/gallery/__text/gallery__text.css);
 @import url(../blocks/gallery/__icon/gallery__icon.css);
+@import url(../blocks/gallery/__icon/_active/gallery__icon_active.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);

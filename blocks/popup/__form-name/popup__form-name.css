@@ -11,3 +11,10 @@
     padding-bottom: 9px;
     margin: 48px 35px 0;
 }
+
+@media screen and (max-width: 444px) {
+    .popup__form-name {
+        max-width: 238px;
+        margin: 73px 20px 0;
+    }
+}

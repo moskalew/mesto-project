@@ -11,3 +11,11 @@
     border-radius: 10px;
     z-index: 3;
 }
+
+@media screen and (max-width: 444px) {
+    .popup__container {
+        max-width: 282px;
+        max-height: 322px;
+        top: -91px;
+    }
+}
