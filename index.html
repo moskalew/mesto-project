@@ -12,7 +12,7 @@
   </head>
 
   <body class="body">
-    <main class="main-page">
+    <div class="main-page">
       <header class="header">
         <img
           class="header__logo"
@@ -89,7 +89,7 @@
               src="/mesto-project/images/kirill-pershin-1088404-unsplash.jpg"
               alt=""
             />
-            <p class="gallery__text">Карачаево-Ч...</p>
+            <p class="gallery__text">Карачаево-Черкессия</p>
             <button class="gallery__icon"></button>
           </div>
         </section>
@@ -97,26 +97,26 @@
       <footer class="footer">
         <p class="footer__copyright">© 2020 Mesto Russia</p>
       </footer>
+    </div>
 
-      <!-- <div class="popup">
-        <div class="popup__container">
-          <div class="close-icon"></div>
-          <h1 class="form__header">Редактировать профиль</h1>
-          <input
-            class="form__label form__name"
-            type="text"
-            placeholder="Жак-Ив Кусто"
-            required
-          />
-          <input
-            class="form__label form__mission"
-            type="text"
-            placeholder="Исследователь океана"
-            required
-          />
-          <button class="button__save">Сохранить</button>
-        </div>
-      </div> -->
-    </main>
+    <section class="popup">
+      <div class="popup__container">
+        <button class="popup__close-icon"></button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input
+          class="popup__form-name"
+          type="text"
+          placeholder="Жак-Ив Кусто"
+          required
+        />
+        <input
+          class="popup__form-mission"
+          type="text"
+          placeholder="Исследователь океана"
+          required
+        />
+        <button class="popup__button">Сохранить</button>
+      </div>
+    </section>
   </body>
 </html>

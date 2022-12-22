@@ -1,36 +1,6 @@
-.popup {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    box-sizing: border-box;
-    width: 1280px;
-    height: 720px;
-    background-color: #000000;
-    opacity: 0.5;
-}
+.close-icon {}
 
-.popup__container {
-    position: absolute;
-    margin: auto;
-    width: 430px;
-    height: 330px;
-    background-color: #FFFFFF;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
-    border: 1px solid red;
-}
-
-.close-icon {
-    position: absolute;
-    z-index: 2;
-    width: 32px;
-    height: 32px;
-    background-image: url(./images/Close\ Icon.svg);
-    left: 438px;
-    top: -38px;
-}
-
+/* 
 .form__header {
     text-align: center;
     width: 330px;
@@ -44,19 +14,10 @@
     line-height: 29px;
 
     color: #000000;
-}
+} */
 
-.form__name {
-    height: 14px;
-    width: 358px;
-    margin: 54px 36px 0 36px;
-}
 
-.form__mission {
-    height: 14px;
-    margin: 43px 36px 0 36px;
-}
-
+/* 
 .form__label {
     border: 0;
     width: 358px;
@@ -83,60 +44,4 @@
     font-size: 18px;
     line-height: 22px;
     text-align: center;
-}
-
-
-/* Main Page */
-/* Main Page */
-/* Main Page */
-
-/* .gallery {
-    width: 880px;
-    height: 744px;
-    left: 200px;
-    top: 329px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 20px 17px;
-}
-
-.gallery__image {
-    border-radius: 10px 10px 0 0;
-
-}
-
-.cards {
-    width: 282px;
-    height: 361px;
-    left: 200px;
-    top: 330px;
-    position: relative;
-    background: #FFFFFF;
-    border-radius: 10px;
-}
-
-.text {
-    width: 246px;
-    height: 23px;
-    left: 819px;
-    top: 1018px;
-    margin: 25px 15px 31px 21px;
-
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 24px;
-    line-height: 29px;
-
-    color: #000000;
-
-}
-
-.heart {
-    position: relative;
-    height: 19px;
-    top: 313px;
-    left: 240px;
 } */
