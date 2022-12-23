@@ -15,6 +15,7 @@
 @media screen and (max-width: 444px) {
     .popup__form-mission {
         max-width: 238px;
-        margin: 0 22px 0;
+        margin-left: 22px;
+        margin-right: 22px;
     }
 }
