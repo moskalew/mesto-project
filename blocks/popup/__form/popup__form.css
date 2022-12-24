@@ -1,6 +1,6 @@
-.popup__form-name {
+.popup__form {
     width: 358px;
-    border: 0;
+    border: none;
     border-bottom: 1px solid #000000;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     font-style: normal;
@@ -8,15 +8,26 @@
     font-size: 14px;
     line-height: 17px;
     color: #000000;
+    padding: 30px 0 9px;
+    margin: 0 36px 0;
+}
+
+.popup__form:first-child {
     padding-bottom: 9px;
     margin: 48px 35px 0;
 }
 
+.popup__form:last-child {
+    padding: 30px 0 9px;
+    margin: 0 36px 0;
+}
+
 @media screen and (max-width: 444px) {
-    .popup__form-name {
+
+    .popup__form:last-child {
         max-width: 238px;
-        margin-top: 73px;
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left: 22px;
+        margin-right: 22px;
+        padding-top: 32px;
     }
 }

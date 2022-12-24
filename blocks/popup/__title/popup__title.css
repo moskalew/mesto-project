@@ -8,15 +8,16 @@
     font-size: 1.54em;
     line-height: 29px;
     color: #000000;
-    padding: 34px 64px 0 36px;
+    padding: 34px 64px 20px 36px;
+
 }
 
 @media screen and (max-width: 444px) {
     .popup__title {
         max-width: 238px;
-        font-size: 1.16em;
+        font-size: 1.13em;
         line-height: 22px;
-        padding: 26px 22px 0;
+        padding: 25px 22px 42px;
 
     }
 }

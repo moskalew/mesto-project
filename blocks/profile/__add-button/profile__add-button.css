@@ -3,7 +3,7 @@
     border-radius: 2px;
     width: 150px;
     height: 50px;
-    background-color: #000000;
+    background-color: rgba(255, 255, 255, 0);
     background-image: url(../../../images/Vector+.svg);
     background-repeat: no-repeat;
     background-position: center;
@@ -11,13 +11,13 @@
 }
 
 .profile__add-button:hover {
-    opacity: 0.8;
+    opacity: 0.6;
     cursor: pointer;
 }
 
 @media screen and (max-width: 888px) {
     .profile__add-button {
-        background-image: url(../../../images/Vector320.svg);
+        background-size: 34% 34%;
         margin: 0 auto;
         padding: 0;
         min-width: 282px;
