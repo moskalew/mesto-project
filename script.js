@@ -9,7 +9,7 @@ const profileInfo = {
 }
 
 function popupOpen() {
-    popup.classList.add('popup_opened'); 
+    popup.classList.toggle('popup_opened'); 
     setProfileInfo(profileInfo.name, profileInfo.mission);
 }
 
@@ -35,4 +35,6 @@ function saveProfile(event) {
 btnEditProfile.addEventListener('click', popupOpen);
 closeIcon.addEventListener('click', popupClose);
 profileForm.addEventListener('submit', saveProfile);
+
+
 
