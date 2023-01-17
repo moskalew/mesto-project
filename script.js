@@ -1,7 +1,7 @@
-const popup = document.querySelector('.popup');
+const popupProfile = document.querySelector('#popup_profile');
 const btnEditProfile = document.querySelector('.profile__edit-button');
-const closeIcon = document.querySelector('.popup__close-icon');
-const profileForm = popup.querySelector('[name="form"]');
+const closeIcon = popupProfile.querySelector('.popup__close-icon');
+const profileForm = popupProfile.querySelector('[name="form"]');
 
 const profileInfo = {
     name: document.querySelector('.profile__name').textContent,
@@ -9,12 +9,12 @@ const profileInfo = {
 }
 
 function popupOpen() {
-    popup.classList.toggle('popup_opened'); 
+    popupProfile.classList.toggle('popup_opened'); 
     setProfileInfo(profileInfo.name, profileInfo.mission);
 }
 
 function popupClose() {
-    popup.classList.toggle('popup_opened');  
+    popupProfile.classList.toggle('popup_opened');  
 }
 
 function setProfileInfo(name, mission) {
