@@ -8,12 +8,12 @@ const profileInfo = {
     mission: document.querySelector('.profile__mission').textContent,
 }
 
-function popupOpen() {
+function popupProfileOpen() {
     popupProfile.classList.toggle('popup_opened'); 
     setProfileInfo(profileInfo.name, profileInfo.mission);
 }
 
-function popupClose() {
+function popupProfileClose() {
     popupProfile.classList.toggle('popup_opened');  
 }
 
@@ -29,11 +29,11 @@ function saveProfile(event) {
     profileInfo.mission = event.target.elements.mission.value;
     document.querySelector('.profile__name').textContent = profileInfo.name;
     document.querySelector('.profile__mission').textContent = profileInfo.mission;
-    popupClose();
+    popupProfileClose();
 }
 
-btnEditProfile.addEventListener('click', popupOpen);
-closeIcon.addEventListener('click', popupClose);
+btnEditProfile.addEventListener('click', popupProfileOpen);
+closeIcon.addEventListener('click', popupProfileClose);
 profileForm.addEventListener('submit', saveProfile);
 
 
