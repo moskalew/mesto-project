@@ -1,5 +1,5 @@
 const popupLocation = document.querySelector('#popup_location');
-const btnEditLocation = document.querySelector('.profile__add-button');
+const btnAddLocation = document.querySelector('.profile__add-button');
 const locationCloseIcon = popupLocation.querySelector('.popup__close-icon');
 const locationForm = popupLocation.querySelector('[name="form"]');
 
@@ -23,7 +23,7 @@ function saveLocation(event) {
     popupLocationClose();
 }
 
-btnEditLocation.addEventListener('click', popupLocationOpen);
+btnAddLocation.addEventListener('click', popupLocationOpen);
 locationCloseIcon.addEventListener('click', popupLocationClose);
 locationForm.addEventListener('submit', saveLocation);
 
