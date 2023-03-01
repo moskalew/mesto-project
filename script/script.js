@@ -82,7 +82,7 @@ function createAndRenderCardFromForm(form) {
               String(link) || ""
             ).trim()}' alt='${location}'> 
             <h2 class='gallery__text'>${location}</h2>
-            <button class='gallery__icon gallery__icon_active' type='button'></button> 
+            <button class='gallery__icon' type='button'></button> 
         `,
     gallery = document.querySelector(".gallery"),
     card = document.createElement("article");
