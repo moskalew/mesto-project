@@ -1,113 +1,100 @@
 // edit profile
 
-const popupProfile = document.querySelector("#popup_profile"); // объявление константы, привязка уникального селектора элементу DOM
-const btnEditProfile = document.querySelector(".profile__edit-button"); // нашли кнопку, сохранили в константу
-const closeIcon = popupProfile.querySelector(".popup__close-icon"); // нашли кнопку закрытия, сохранили в константу
-const profileForm = popupProfile.querySelector('[name="form"]'); // нашли блок формы с инпутами и кнопкой с типом сабмит
+const popupProfile = document.querySelector("#popup_profile");
+const btnEditProfile = document.querySelector(".profile__edit-button");
+const closeIcon = popupProfile.querySelector(".popup__close-icon");
+const profileForm = popupProfile.querySelector("[name='form']");
 
 const profileInfo = {
-  // создали объект (пара - ключ: значение)
-  name: document.querySelector(".profile__name").textContent, //считали (или зАдали?) значение содержимого текстого элемента;
-  mission: document.querySelector(".profile__mission").textContent, // то-же с другим свойством
+  name: document.querySelector(".profile__name").textContent,
+  mission: document.querySelector(".profile__mission").textContent,
 };
 
 function popupProfileOpen() {
-  // функция открытия окна
-  popupProfile.classList.toggle("popup_opened"); // тут переключается аттрибут класса
-  setProfileInfo(profileInfo.name, profileInfo.mission); // это функция, которая получает на вход аргументы свойств объекта
+  popupProfile.classList.toggle("popup_opened");
+  setProfileInfo(profileInfo.name, profileInfo.mission);
 }
 
 function popupProfileClose() {
-  // функция закрытия окна
-  popupProfile.classList.toggle("popup_opened"); // тут переключается класс хтмл тега
+  popupProfile.classList.toggle("popup_opened");
 }
 
 function setProfileInfo(name, mission) {
-  // функция, которая задаёт (устанавливает) значения в поля инпутов
-  profileForm.elements.name.value = name; // тут прописываем значение в инпут формы
-  profileForm.elements.mission.value = mission; // тут то же, но с другим именем аттрибута
+  profileForm.elements.name.value = name;
+  profileForm.elements.mission.value = mission;
 }
 
 function saveProfile(event) {
-  // ф-я сохранения профиля, на входе - событие
-  event.preventDefault(); // отменяем стандартное поведение по умолчанию, иначе форма отправится
-  // console.log(event);
-  profileInfo.name = event.target.elements.name.value; // здесь по событию присваивается значение полю
-  profileInfo.mission = event.target.elements.mission.value; // я по прежнему плохо понимаю эвент таргет элементс, хотя тут всё просто
-  document.querySelector(".profile__name").textContent = profileInfo.name; // получаем значение текстового поля, присваиваем свойству объекта
-  document.querySelector(".profile__mission").textContent = profileInfo.mission; // та же история с другим ключом
-  popupProfileClose(); // ф-я закрытия
+  event.preventDefault();
+
+  profileInfo.name = event.target.elements.name.value;
+  profileInfo.mission = event.target.elements.mission.value;
+  document.querySelector(".profile__name").textContent = profileInfo.name;
+  document.querySelector(".profile__mission").textContent = profileInfo.mission;
+  popupProfileClose();
 }
 
-btnEditProfile.addEventListener("click", popupProfileOpen); // + слушатель по клику на кнопку
-closeIcon.addEventListener("click", popupProfileClose); // аналогично
-profileForm.addEventListener("submit", saveProfile); // здесь добавили слушатель блоку формы с типом сабмит с передачей функции в качестве второго аргумента
+btnEditProfile.addEventListener("click", popupProfileOpen);
+closeIcon.addEventListener("click", popupProfileClose);
+profileForm.addEventListener("submit", saveProfile);
 
 // add cards
 
-const popupLocation = document.querySelector("#popup_location"); // здесь получили html элемент по айдишнику
-const btnAddLocation = document.querySelector(".profile__add-button"); // тут прицепились к большой кнопке с плюсом
-const locationCloseIcon = popupLocation.querySelector(".popup__close-icon"); // это кнопка закрытия
-const locationForm = popupLocation.querySelector('[name="form"]'); // здесь упаковали в переменую блок формы
+const popupLocation = document.querySelector("#popup_location");
+const btnAddLocation = document.querySelector(".profile__add-button");
+const locationCloseIcon = popupLocation.querySelector(".popup__close-icon");
+const locationForm = popupLocation.querySelector("[name='form']");
 
 const locationInfo = {
-  // это объект с ключами и значениями
   location: "",
   link: "",
 };
 
 function popupLocationOpen() {
-  // ф-я открытия окна с карточками
-  popupLocation.classList.toggle("popup_opened"); // тут меняется класс хтмл элемента
+  popupLocation.classList.toggle("popup_opened");
 }
 
 function popupLocationClose() {
-  // ф-я закрытия
-  popupLocation.classList.toggle("popup_opened"); // метод переключает класс хтмл элемента
+  popupLocation.classList.toggle("popup_opened");
 }
 
 function saveLocation(event) {
-  // ф-я сохраниения, принимает эвент
-  event.preventDefault(); // отмена стандартного сценария
+  event.preventDefault();
 
-  createAndRenderCardFromForm(event.target); // ф-я создания и редактирования карточки ( а почему FormForm?)
+  createAndRenderCardFromForm(event.target);
 
-  popupLocationClose(); // ф-я закрыть попап
+  popupLocationClose();
 }
 
 function toggleLike(event) {
-  // ф-я вкл/выкл лайк
-  event.target.classList.toggle("gallery__icon_active"); // Свойство target интерфейса Event c методом classList.toggle
-} // это надо получше понять
+  event.target.classList.toggle("gallery__icon_active");
+}
 
 function createAndRenderCardFromForm(form) {
-  // ф-я создания карточки (форм на вход?)
   const { location, link } = Object.fromEntries(
       new FormData(
         (form instanceof HTMLFormElement && form) || undefined
       ).entries()
-    ), //??
-    // ^^ Очевидно объявлена константа-объект,
-
-    //Этот блок создаёт html код
+    ),
     template = `
-            <img class="gallery__image" src="${(
+            <button class='gallery__garbage-icon' type='button'></button>
+            <img class='gallery__image' src='${(
               String(link) || ""
-            ).trim()}" alt="${location}"> 
-            <h2 class="gallery__text">${location}</h2>
-            <button class="gallery__icon -gallery__icon_active" type="button"></button> 
-        `, // здесь, возможно, опечатка "-gallery__icon_active", а возможно и нет, надо заглянуть в DOM через консоль.
-    gallery = document.querySelector(".gallery"), // находим секцию с карточками
-    card = document.createElement("article"); //создаём html элемент с классом "артикль"
+            ).trim()}' alt='${location}'> 
+            <h2 class='gallery__text'>${location}</h2>
+            <button class='gallery__icon gallery__icon_active' type='button'></button> 
+        `,
+    gallery = document.querySelector(".gallery"),
+    card = document.createElement("article");
 
   if (location && link && gallery instanceof HTMLElement) {
-    // Это блок тела условия
     card.className = "gallery__cards";
     card.innerHTML = template;
+
     gallery.prepend(card);
     form.reset();
 
-    card.querySelector(".gallery__icon").addEventListener("click", toggleLike);
+    initCardHandlers(card);
   } else
     console.log("renderCard ERROR", location, link, template, gallery, card);
 }
@@ -116,6 +103,42 @@ btnAddLocation.addEventListener("click", popupLocationOpen);
 locationCloseIcon.addEventListener("click", popupLocationClose);
 locationForm.addEventListener("submit", saveLocation);
 
-document.querySelectorAll(".gallery__icon").forEach((icon) => {
-  icon.addEventListener("click", toggleLike);
-});
+////
+
+function removeParent(childEl) {
+  childEl.parentElement.remove();
+}
+
+function removeCard(btnClickEvent) {
+  removeParent(btnClickEvent.target);
+}
+
+document.querySelectorAll(".gallery__cards").forEach(initCardHandlers);
+
+const previewPopup = document.querySelector(".popup_img");
+previewPopup
+  .querySelector(".popup__close-icon")
+  .addEventListener("click", () => {
+    previewPopup.classList.remove("popup_opened");
+  });
+
+function setPreview(src, caption = "") {
+  if (!src) {
+    console.error("Попытка открыть popup без src");
+    return;
+  }
+  previewPopup.querySelector("img").src = src;
+  previewPopup.querySelector(".popup__caption").textContent = caption;
+  previewPopup.classList.add("popup_opened");
+}
+
+function initCardHandlers(card) {
+  card.querySelector(".gallery__icon").addEventListener("click", toggleLike);
+  card
+    .querySelector(".gallery__garbage-icon")
+    .addEventListener("click", removeCard);
+  card.querySelector(".gallery__image").addEventListener("click", (event) => {
+    console.dir(event.target);
+    setPreview(event.target.src);
+  });
+}
