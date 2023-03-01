@@ -101,7 +101,7 @@ function createAndRenderCardFromForm(form) {
     card = document.createElement("article"); //создаём html элемент с классом "артикль"
 
   if (location && link && gallery instanceof HTMLElement) {
-    // Это блок условия
+    // Это блок тела условия
     card.className = "gallery__cards";
     card.innerHTML = template;
     gallery.prepend(card);
