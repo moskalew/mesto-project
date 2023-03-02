@@ -40,7 +40,7 @@ profileForm.addEventListener("submit", saveProfile);
 
 // add cards
 
-const popupLocation = document.querySelector("#popup_location");
+const popupLocation = document.querySelector("#popup_location").content;
 const btnAddLocation = document.querySelector(".profile__add-button");
 const locationCloseIcon = popupLocation.querySelector(".popup__close-icon");
 const locationForm = popupLocation.querySelector("[name='form']");
@@ -88,7 +88,7 @@ function createAndRenderCardFromForm(form) {
     card = document.createElement("article");
 
   if (location && link && gallery instanceof HTMLElement) {
-    card.className = "gallery__cards";
+    card.className = "#gallery__cards";
     card.innerHTML = template;
 
     gallery.prepend(card);
@@ -113,7 +113,7 @@ function removeCard(btnClickEvent) {
   removeParent(btnClickEvent.target);
 }
 
-document.querySelectorAll(".gallery__cards").forEach(initCardHandlers);
+document.querySelectorAll("#gallery__cards").forEach(initCardHandlers);
 
 const previewPopup = document.querySelector(".popup_img");
 previewPopup
