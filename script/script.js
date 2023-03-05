@@ -38,17 +38,81 @@ btnEditProfile.addEventListener("click", popupProfileOpen);
 closeIcon.addEventListener("click", popupProfileClose);
 profileForm.addEventListener("submit", saveProfile);
 
+// create cards
+
+const galleryContainer = document.querySelector("#gallery-container");
+const galleryTemplate = document.querySelector("#gallery-template");
+
+const galleryData = [
+  {
+    title: "Архыз",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+  },
+  {
+    title: "Челябинская область",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+  },
+  {
+    title: "Иваново",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+  },
+  {
+    title: "Камчатка",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+  },
+  {
+    title: "Холмогорский район",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+  },
+  {
+    title: "Байкал",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+  },
+];
+
+galleryData.reverse().forEach((cardData) => {
+  createAndRenderCard(cardData.title, cardData.link);
+});
+
 // add cards
 
-const popupLocation = document.querySelector("#popup_location").content;
+function createAndRenderCardFromForm(form) {
+  const title = form.elements.location.value;
+  const link = form.elements.link.value;
+
+  createAndRenderCard(title, link);
+}
+
+function createAndRenderCard(title, link) {
+  const cardNode = galleryTemplate.content.cloneNode(true);
+  const galleryTitle = cardNode.querySelector(".gallery__text");
+  const galleryLink = cardNode.querySelector(".gallery__image");
+  const galleryGarbageIcon = cardNode.querySelector(".gallery__garbage-icon");
+  const galleryIcon = cardNode.querySelector(".gallery__icon");
+
+  galleryTitle.textContent = title;
+
+  galleryLink.src = link;
+
+  galleryContainer.prepend(cardNode);
+
+  galleryGarbageIcon.addEventListener("click", () => {
+    galleryGarbageIcon.parentElement.remove();
+  });
+
+  galleryIcon.addEventListener("click", function () {
+    galleryIcon.classList.toggle("gallery__icon_active");
+  });
+
+  galleryLink.addEventListener("click", () => {
+    setPreview(galleryLink.src, title);
+  });
+}
+
+const popupLocation = document.querySelector("#popup_location");
 const btnAddLocation = document.querySelector(".profile__add-button");
 const locationCloseIcon = popupLocation.querySelector(".popup__close-icon");
 const locationForm = popupLocation.querySelector("[name='form']");
-
-const locationInfo = {
-  location: "",
-  link: "",
-};
 
 function popupLocationOpen() {
   popupLocation.classList.toggle("popup_opened");
@@ -60,60 +124,15 @@ function popupLocationClose() {
 
 function saveLocation(event) {
   event.preventDefault();
-
-  createAndRenderCardFromForm(event.target);
-
+  const form = event.target;
+  createAndRenderCardFromForm(form);
+  form.reset();
   popupLocationClose();
-}
-
-function toggleLike(event) {
-  event.target.classList.toggle("gallery__icon_active");
-}
-
-function createAndRenderCardFromForm(form) {
-  const { location, link } = Object.fromEntries(
-      new FormData(
-        (form instanceof HTMLFormElement && form) || undefined
-      ).entries()
-    ),
-    template = `
-            <button class='gallery__garbage-icon' type='button'></button>
-            <img class='gallery__image' src='${(
-              String(link) || ""
-            ).trim()}' alt='${location}'> 
-            <h2 class='gallery__text'>${location}</h2>
-            <button class='gallery__icon' type='button'></button> 
-        `,
-    gallery = document.querySelector(".gallery"),
-    card = document.createElement("article");
-
-  if (location && link && gallery instanceof HTMLElement) {
-    card.className = "#gallery__cards";
-    card.innerHTML = template;
-
-    gallery.prepend(card);
-    form.reset();
-
-    initCardHandlers(card);
-  } else
-    console.log("renderCard ERROR", location, link, template, gallery, card);
 }
 
 btnAddLocation.addEventListener("click", popupLocationOpen);
 locationCloseIcon.addEventListener("click", popupLocationClose);
 locationForm.addEventListener("submit", saveLocation);
-
-////
-
-function removeParent(childEl) {
-  childEl.parentElement.remove();
-}
-
-function removeCard(btnClickEvent) {
-  removeParent(btnClickEvent.target);
-}
-
-document.querySelectorAll("#gallery__cards").forEach(initCardHandlers);
 
 const previewPopup = document.querySelector(".popup_img");
 previewPopup
@@ -130,15 +149,4 @@ function setPreview(src, caption = "") {
   previewPopup.querySelector("img").src = src;
   previewPopup.querySelector(".popup__caption").textContent = caption;
   previewPopup.classList.add("popup_opened");
-}
-
-function initCardHandlers(card) {
-  card.querySelector(".gallery__icon").addEventListener("click", toggleLike);
-  card
-    .querySelector(".gallery__garbage-icon")
-    .addEventListener("click", removeCard);
-  card.querySelector(".gallery__image").addEventListener("click", (event) => {
-    console.dir(event.target);
-    setPreview(event.target.src);
-  });
 }
