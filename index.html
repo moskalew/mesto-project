@@ -2,21 +2,21 @@
 <html lang="ru">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./pages/index.css" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
   <title>project-mesto</title>
 </head>
 
 <body class="body">
   <div class="main-page">
     <header class="header">
-      <img class="header__logo" src="./images/Vectorlogo.svg" alt="логотип место" />
+      <img class="header__logo" src="./images/Vectorlogo.svg" alt="логотип место">
     </header>
     <main>
       <section class="profile">
-        <img src="./images/imageJacIf.jpg" alt="фотка Кусто" class="profile__avatar" />
+        <img src="./images/imageJacIf.jpg" alt="фотка Кусто" class="profile__avatar">
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__edit-button" type="button"></button>
@@ -25,7 +25,7 @@
         <button class="profile__add-button" type="button"></button>
       </section>
 
-      <div id="gallery-container" class="gallery" aria-label="Галерея">
+      <div id="gallery-container" class="gallery">
         <template id="gallery-template">
           <article class="gallery__card">
             <button class="gallery__garbage-icon" type="button"></button>
@@ -47,8 +47,8 @@
       <button class="popup__close-icon" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form name="form">
-        <input name="name" class="popup__form" type="text" placeholder="Ваше имя" required />
-        <input name="mission" class="popup__form" type="text" placeholder="Укажите вид деятельности" required />
+        <input name="name" class="popup__form" type="text" placeholder="Ваше имя" required>
+        <input name="mission" class="popup__form" type="text" placeholder="Укажите вид деятельности" required>
         <button class="popup__button" type="submit">Сохранить</button>
       </form>
     </div>
@@ -59,8 +59,8 @@
       <button class="popup__close-icon" type="button"></button>
       <h2 class="popup__title">Новое место</h2>
       <form name="form">
-        <input name="location" class="popup__form" type="text" placeholder="Название" required />
-        <input name="link" class="popup__form" type="text" placeholder="Ссылка на картинку" required />
+        <input name="location" class="popup__form" type="text" placeholder="Название" required>
+        <input name="link" class="popup__form" type="text" placeholder="Ссылка на картинку" required>
         <button class="popup__button" type="submit">Создать</button>
       </form>
     </div>
@@ -70,7 +70,7 @@
     <div class="popup__container_image">
       <button class="popup__close-icon" type="button"></button>
       <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg" class="popup__image"
-        alt="Здесь должно быть изображение" />
+        alt="Здесь должно быть изображение">
       <h3 class="popup__caption">Абырвалг</h3>
     </div>
   </div>
