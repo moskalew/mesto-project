@@ -1,7 +1,7 @@
 .popup__form {
     width: 358px;
     border: none;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 400;

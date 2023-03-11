@@ -1,20 +1,40 @@
-const popupProfile = document.querySelector("#popup_profile");
-const btnEditProfile = document.querySelector(".profile__edit-button");
-const closeIcon = popupProfile.querySelector(".popup__close-icon");
-const profileForm = popupProfile.querySelector("[name='form']");
+// КОНСТАНТЫ DOM
 
-const popupLocation = document.querySelector("#popup_location");
-const btnAddLocation = document.querySelector(".profile__add-button");
-const locationCloseIcon = popupLocation.querySelector(".popup__close-icon");
-const locationForm = popupLocation.querySelector("[name='form']");
+// профиль: имя с карандашом справа от аватарки
+const profileInfo = document.querySelector(".profile__info");
+const profileName = profileInfo.querySelector(".profile__name");
+const profileMission = profileInfo.querySelector(".profile__mission");
 
-const galleryContainer = document.querySelector("#gallery-container");
-const galleryTemplate = document.querySelector("#gallery-template");
+// модалка редактирования профиля, открывается по нажатию на карандаш
+const profilePopup = document.querySelector("#popup_profile");
+const profileEditBtn = document.querySelector(".profile__edit-button");
+const profileCloseIcon = profilePopup.querySelector(".popup__close-icon");
+// форма профиля в этой модалке и её поля (имя, миссия)
+const profileForm = profilePopup.querySelector("[name='form']");
+const profileFormNameInput = profileForm.querySelector("[name='name']");
+const profileFormMissionInput = profileForm.querySelector("[name='mission']");
 
-const profileInfo = {
-  name: document.querySelector(".profile__name").textContent,
-  mission: document.querySelector(".profile__mission").textContent,
-};
+// модалка добавления карточки, открывается по нажатию на плюс
+const locationPopup = document.querySelector("#popup_location");
+const locationAddBtn = document.querySelector(".profile__add-button");
+const locationCloseIcon = locationPopup.querySelector(".popup__close-icon");
+// форма карточки в этой модалке и её поля (путь к картинке, описание)
+const locationForm = locationPopup.querySelector("[name='form']");
+const locationFormLinkInput = locationForm.querySelector("[name='link']");
+const locationFormLocationInput = locationForm.querySelector("[name='location']");
+
+// модалка предпросмотра картинки из карточки
+const previewPopup = document.querySelector(".popup_img");
+const previewImage = previewPopup.querySelector("img");
+const previewCaption = previewPopup.querySelector(".popup__caption");
+const previewCloseIcon = previewPopup.querySelector(".popup__close-icon");
+
+// галерея и шаблон карточки
+const cardsContainer = document.querySelector("#gallery-container");
+const cardsTemplate = document.querySelector("#gallery-template");
+
+
+// ФУНКЦИИ
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -24,112 +44,105 @@ function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
-function setProfileInfo(name, mission) {
-  profileForm.elements.name.value = name;
-  profileForm.elements.mission.value = mission;
-}
 
-function saveProfile(event) {
-  event.preventDefault();
-  profileInfo.name = event.target.elements.name.value;
-  profileInfo.mission = event.target.elements.mission.value;
-  document.querySelector(".profile__name").textContent = profileInfo.name;
-  document.querySelector(".profile__mission").textContent = profileInfo.mission;
-  closePopup(popupProfile);
-}
+function createCard(link, location) {
+  const cardNode = cardsTemplate.content.cloneNode(true);
+  const cardTitle = cardNode.querySelector(".gallery__text");
+  const cardLink = cardNode.querySelector(".gallery__image");
+  const cardDeleteIcon = cardNode.querySelector(".gallery__garbage-icon");
+  const cardLikeIcon = cardNode.querySelector(".gallery__icon");
+  const alt = 'изображение места "' + location + '"';
 
-btnEditProfile.addEventListener("click", (event) => {
-  const btn = event.target;
-  const popupSelector = btn.dataset.popup;
-  const popup = document.querySelector(popupSelector);
-  setProfileInfo(profileInfo.name, profileInfo.mission);
-  openPopup(popup);
-});
+  cardLink.src = link;
+  cardLink.alt = alt;
 
-closeIcon.addEventListener("click", (event) => {
-  closePopup(popupProfile);
-});
+  cardTitle.textContent = location;
 
-profileForm.addEventListener("submit", saveProfile);
-
-galleryData.reverse().forEach((cardData) => {
-  const card = createCard(cardData.title, cardData.link);
-  prependCard(card);
-});
-
-function createAndRenderCardFromForm(form) {
-  const title = form.elements.location.value;
-  const link = form.elements.link.value;
-  const card = createCard(title, link);
-  prependCard(card);
-}
-
-function createCard(title, link, altText) {
-  const cardNode = galleryTemplate.content.cloneNode(true);
-  const galleryTitle = cardNode.querySelector(".gallery__text");
-  const galleryLink = cardNode.querySelector(".gallery__image");
-  const galleryGarbageIcon = cardNode.querySelector(".gallery__garbage-icon");
-  const galleryIcon = cardNode.querySelector(".gallery__icon");
-  const alt = 'изображение места "' + title + '"';
-
-  galleryTitle.textContent = title;
-
-  galleryLink.src = link;
-  galleryLink.alt = alt;
-
-  galleryGarbageIcon.addEventListener("click", () => {
-    galleryGarbageIcon.closest('.gallery__card').remove();
+  cardDeleteIcon.addEventListener("click", () => {
+    cardDeleteIcon.closest('.gallery__card').remove();
   });
 
-  galleryIcon.addEventListener("click", function () {
-    galleryIcon.classList.toggle("gallery__icon_active");
+  cardLikeIcon.addEventListener("click", function () {
+    cardLikeIcon.classList.toggle("gallery__icon_active");
   });
 
-  galleryLink.addEventListener("click", () => {
-    setPreview(link, title, alt);
+  cardLink.addEventListener("click", () => {
+    setPreview(link, location, alt);
+    openPopup(previewPopup);
   });
+
   return cardNode;
 }
 
 function prependCard(card) {
-  galleryContainer.prepend(card);
+  cardsContainer.prepend(card);
 }
 
-function saveLocation(event) {
-  event.preventDefault();
-  const form = event.target;
-  createAndRenderCardFromForm(form);
-  form.reset();
-  closePopup(popupLocation);
-}
-
-btnAddLocation.addEventListener("click", (event) => {
-  const btn = event.target;
-  const popupSelector = btn.dataset.popup;
-  const popup = document.querySelector(popupSelector);
-  openPopup(popup);
-});
-
-locationCloseIcon.addEventListener("click", () => {
-  closePopup(popupLocation);
-});
-locationForm.addEventListener("submit", saveLocation);
-
-const previewPopup = document.querySelector(".popup_img");
-previewPopup
-  .querySelector(".popup__close-icon")
-  .addEventListener("click", () => {
-    closePopup(previewPopup);
-  });
-
-function setPreview(src, caption = "", altText = "") {
+function setPreview(src, caption = "", alt = "") {
   if (!src) {
     console.error("Попытка открыть popup без src");
     return;
   }
-  const img = previewPopup.querySelector("img");
-  img.src = src;
-  img.alt = altText;
-  previewPopup.querySelector(".popup__caption").textContent = caption;
-  openPopup(previewPopup);
+
+  previewImage.src = src;
+  previewImage.alt = alt;
+  previewCaption.textContent = caption;
 }
+
+
+// СОБЫТИЯ
+
+// модалка профиля
+// открываем модалку профиля
+profileEditBtn.addEventListener("click", () => {
+  profileFormNameInput.value = profileName.textContent;
+  profileFormMissionInput.value = profileMission.textContent;
+  openPopup(profilePopup);
+});
+
+// закрываем модалку профиля
+profileCloseIcon.addEventListener("click", (event) => {
+  closePopup(profilePopup);
+});
+
+// сохраняем профиль
+profileForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  profileName.textContent = profileFormNameInput.value;
+  profileMission.textContent = profileFormMissionInput.value;
+  closePopup(profilePopup);
+});
+
+// модалка добавления карточки
+// открываем модалку добавления карточки
+locationAddBtn.addEventListener("click", () => {
+  openPopup(locationPopup);
+});
+
+// закрываем модалку добавления карточки
+locationCloseIcon.addEventListener("click", () => {
+  closePopup(locationPopup);
+});
+
+// создаём новую карточку, добавлем в галлерею, очищаем форму и закрываем модалку
+locationForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const card = createCard(locationFormLinkInput.value, locationFormLocationInput.value);
+  prependCard(card);
+
+  locationForm.reset();
+  closePopup(locationPopup);
+});
+
+// просмотр картинки
+// закрываем модалку просмотра картинки
+previewCloseIcon.addEventListener("click", () => {
+  closePopup(previewPopup);
+});
+
+
+// заполняем галерею карточками по шаблону, данные - в скрипте cards.js
+galleryData.reverse().forEach((cardData) => {
+  const card = createCard(cardData.link, cardData.title);
+  prependCard(card);
+});
