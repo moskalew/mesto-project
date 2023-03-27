@@ -146,3 +146,67 @@ galleryData.reverse().forEach((cardData) => {
   const card = createCard(cardData.link, cardData.title);
   prependCard(card);
 });
+
+
+
+///
+/// Validation
+///
+
+// форма
+// profileForm.addEventListener('submit', function (evt) {
+//   evt.preventDefault();
+// });
+
+// поле name
+// profileFormNameInput.addEventListener('input', function (evt) {
+//   console.log(evt.target.validity.tooShort);
+// });
+
+// поле mission
+// profileFormMissionInput.addEventListener('input', function (evt) {
+//   console.log(evt.target.validity.valid);
+// });
+///
+
+// Вынесем все необходимые элементы формы в константы
+// выбираем форму ввода
+const formElement = profileForm;
+
+// получаем id поля form__input
+const formInput = formElement.querySelector('.popup__form');
+// console.log(formInput.id);
+
+// с применением шаблонных строк найходим эту ошибку:
+// Выбираем элемент ошибки на основе уникального класса 
+const formError = formElement.querySelector(`.${formInput.id}-error`);
+//
+
+// Передадим текст ошибки вторым параметром
+const showInputError = (element, errorMessage) => {
+  element.classList.add('popup__form_type_error');
+  // Заменим содержимое span с ошибкой на переданный параметр
+  formError.textContent = errorMessage;
+  formError.classList.add('popup__form_input_error');
+};
+
+const hideInputError = (element) => {
+  element.classList.remove('popup__form_type_error');
+  formError.classList.remove('popup__form_input_error');
+  // Очистим ошибку
+  formError.textContent = '';
+};
+
+const isValid = () => {
+  if (!formInput.validity.valid) {
+    // Передадим сообщение об ошибке вторым аргументом
+    showInputError(formInput, formInput.validationMessage);
+  } else {
+    hideInputError(formInput);
+  }
+};
+
+// Вызовем функцию isValid на каждый ввод символа
+formInput.addEventListener('input', isValid);
+
+
